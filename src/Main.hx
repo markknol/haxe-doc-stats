@@ -18,11 +18,12 @@ class Main {
   public static function main(){
     var args = Sys.args();
     if (args.length == 0) {
-      Sys.println("run with 'ApiStats.n' \n" +
-        "\t path to xml directory. default: 'xml/' \n" +
-        "\t path to output file. default: 'xml/index.html' \n" +
-        "\t path to template html-file. default: 'layout.html' \n" +
-        "\t path to log-file. default: 'xml/log.txt' \n");
+      Sys.println("run with 'ApiStats.n arg0 arg1 arg2 arg3' \n" +
+        "\t[arg0] path to xml directory. default: 'xml/' \n" +
+        "\t[arg1] path to output file. default: 'xml/index.html' \n" +
+        "\t[arg2] path to template html-file. default: 'layout.html' \n" +
+        "\t[arg3] path to log-file. default: 'xml/log.txt' \n");
+        return;
     }
     
     inline function getArg(i, fallback) return args[i] == null ? fallback : args[i];
