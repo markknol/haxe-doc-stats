@@ -103,14 +103,15 @@
             <span class="span2"></span>
             <h5 class="span2 clickable" onclick="$('.missing', $(this).parent()).toggle()">::subStat.name::</h5>
             <div class="span3">
-              <p><span class="badge badge-::subStat.getClass(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: classes </p>
+              <p><span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: classes </p>
               <div class="missing" style="display:none" ::cond subStat.missingTypes.length>0::> 
                 <h6>Missing:</h6>
                 <ul>::foreach name subStat.missingTypes::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
               </div>
             </div>
             <div class="span5">
-              <p><span class="badge badge-::subStat.getClass(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members </p>
+              <p ::cond subStat.fields.total>0::><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members </p>
+              <p ::cond subStat.fields.total==0::><em>No members</em></p>
               <div class="missing" style="display:none" ::cond subStat.missingFields.length>0::> 
                 <h6>Missing:</h6>
                 <ul>::foreach name subStat.missingFields::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
