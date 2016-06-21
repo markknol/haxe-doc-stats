@@ -71,7 +71,7 @@
       <hr/>
       <div class="row totals">
         <div class="span6">
-          <h4>Total class descriptions <small>::totals.types.documented::/::totals.types.total::</small></h4>
+          <h4>Total type descriptions <small>::totals.types.documented::/::totals.types.total::</small></h4>
           ::raw totals.types.getProgressBar()::
         </div>
         <div class="span6">
@@ -88,7 +88,7 @@
             <hr/>
             <h4 class="span2">::stat.name::</h4>
             <div class="span5">
-              <h4>Class descriptions <small>::stat.types.documented::/::stat.types.total::</small></h4>
+              <h4>Type descriptions <small>::stat.types.documented::/::stat.types.total::</small></h4>
               ::raw stat.types.getProgressBar()::
             </div> 
             <div class="span5">
@@ -103,14 +103,14 @@
             <span class="span2"></span>
             <h5 class="span2 clickable" onclick="$('.missing', $(this).parent()).toggle()">::subStat.name::</h5>
             <div class="span3">
-              <p><span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: classes </p>
+              <p><span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: types</p>
               <div class="missing" style="display:none" ::cond subStat.missingTypes.length>0::> 
                 <h6>Missing:</h6>
                 <ul>::foreach name subStat.missingTypes::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
               </div>
             </div>
             <div class="span5">
-              <p ::cond subStat.fields.total>0::><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members </p>
+              <p ::cond subStat.fields.total>0::><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members</p>
               <p ::cond subStat.fields.total==0::><em>No members</em></p>
               <div class="missing" style="display:none" ::cond subStat.missingFields.length>0::> 
                 <h6>Missing:</h6>
@@ -125,9 +125,9 @@
       <blockquote class="define">
         <p><b>higher than 75%</b> is good<br/>
            <b>lower than 10%</b> is bad</p>
-        <p>&quot;Classes&quot; can be classes, typedefs, abstracts, enums, interfaces</p>
-        <p>&quot;Members&quot; are fields, statics, enum constructors</p>
-        <p>Everything that is private or has metadata @:dox(hide) or @:noCompletion gets skipped</p>
+        <p>&quot;Types&quot; can be classes, typedefs, abstracts, enums, interfaces</p>
+        <p>&quot;Members&quot; are fields, typedefs, statics, enum constructors</p>
+        <p>Everything that is private/override or has metadata @:dox(hide) or @:noCompletion gets skipped</p>
       </blockquote>
     </div>
   </div>
