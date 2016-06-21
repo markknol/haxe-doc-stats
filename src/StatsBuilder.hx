@@ -156,7 +156,7 @@ private class StatInfo {
   }
 }
 
-@:keep private class Stat {
+@:keep class Stat {
   public var name(default, null):String;
   
   public var types(default, null):StatInfo = new StatInfo();
@@ -178,7 +178,7 @@ private class StatInfo {
   /** Add stat into this **/
   public function add(stats:Stat) {
     for (i in 0 ... stats._all.length) {
-      @:privateAccess _all[i].add(stats._all[i]);
+      _all[i].add(stats._all[i]); // TODO: why can I access private fields here?
     }
   }
   
@@ -230,7 +230,7 @@ class HtmlTemplateUtils {
 
 @:enum abstract TypeId(Int) {
   public var CLASS = 1;
-	public var ENUM = 2;
-	public var TYPEDEF = 3;
-	public var ABSTRACT = 4;
+  public var ENUM = 2;
+  public var TYPEDEF = 3;
+  public var ABSTRACT = 4;
 }
