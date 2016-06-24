@@ -26,9 +26,18 @@ class StatsBuilder{
     // sub stats by type path. substats are the packages in the packages
     var subStats = new StringMap<Stat>();
     
+  
+    function hasValidMetaData(el:{meta:MetaData}) {
+      for (meta in el.meta) if (meta.name == ":dox" || meta.name == ":noCompletion") {
+        return false;
+      }
+      return true;
+    }
+  
     // process haxe type. stats can be decorated while collecting
     inline function process(typeInfos:TypeInfos, typeId:TypeId, decorator:Stat->Void = null) {
       if (typeInfos == null || typeInfos.path == null || typeInfos.isPrivate || !typeInfos.file.endsWith(".hx")) return;
+      if (!hasValidMetaData(typeInfos)) return;
       
       var typePath = typeInfos.path;
       var typePaths = typePath.split(".");
@@ -52,14 +61,7 @@ class StatsBuilder{
       
       processType(stat);
     }
-  
-    function hasValidMetaData(el:{meta:MetaData}) {
-      for (meta in el.meta) if ((meta.name == ":dox" && meta.params[0] == "hide") || meta.name == ":noCompletion") {
-        return false;
-      }
-      return true;
-    }
-  
+    
     // recursive collect+processes all info from TypeTrees
     function collect(types:Array<TypeTree>) {
       for (type in types) {
