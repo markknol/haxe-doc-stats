@@ -1,14 +1,5 @@
 package;
 
-import Xml;
-import haxe.ds.StringMap;
-import haxe.rtti.CType.MetaData;
-import haxe.rtti.CType.TypeInfos;
-import haxe.rtti.CType.TypeTree;
-import haxe.rtti.XmlParser;
-import sys.FileSystem;
-import sys.io.File;
-import templo.Template;
 using StringTools;
 
 /**
