@@ -45,9 +45,9 @@
   <postBuildCommand alwaysRun="False">run.bat</postBuildCommand>
   <!-- Other project options -->
   <options>
-    <option showHiddenPaths="False" />
+    <option showHiddenPaths="True" />
     <option testMovie="Custom" />
-    <option testMovieCommand="run.bat" />
+    <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
   <storage />

@@ -29,6 +29,7 @@ class StatsBuilder{
   
     function hasValidMetaData(el:{meta:MetaData}) {
       for (meta in el.meta) if (meta.name == ":dox" || meta.name == ":noCompletion") {
+        //if (Reflect.hasField(el,"path")) trace(untyped el.path, meta);
         return false;
       }
       return true;

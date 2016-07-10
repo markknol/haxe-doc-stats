@@ -1,0 +1,5 @@
+-lib hxtemplo
+-cp src
+-neko bin/DocStats.n
+-main Main
+-dce no
