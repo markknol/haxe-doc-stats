@@ -39,7 +39,7 @@ neko DocStats.n arg0 arg1 arg2 arg3
 These are the rules/definitions used by this statistics:
 
  * "Types" can be classes, typedefs, abstracts, enums, interfaces.
- * "Members" are fields, typedefs, statics, enum constructors.
+ * "Members" are fields, functions, statics, enum constructors.
  * Everything that is private/override or has metadata `@:dox(hide)` or `@:noCompletion` gets skipped.
  * The quality of the documentation is not measured.
  * The colors work like this:
