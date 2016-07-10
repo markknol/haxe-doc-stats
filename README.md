@@ -9,6 +9,8 @@ This generator uses Neko to generate a static page with stats about your Haxe pr
 
 ## Preview
 
+To see the stats of the Haxe Standard Library: <http://haxe.stroep.nl/api-stats/3.3/>
+
 ![api-stats](https://cloud.githubusercontent.com/assets/576184/16715856/554cec7e-46ec-11e6-804f-5ac23f174c40.gif)
 
 ## How to use
