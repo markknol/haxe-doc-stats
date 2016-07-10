@@ -2,7 +2,7 @@
 > ### Are we documented yet?
 
 Display how much your Haxe project is documented. 
-This generator uses Neko to generate a static page with stats about your Haxe project code documentation.
+This generator uses Neko to generate a static page with stats about your Haxe project code documentation. The tool is created to get more information about the Haxe Standard Library API documentation, but can be used for any project.
 
 - Displays documentation amounts for types and its members (global and detailed per package)
 - Packages can be expanded to see what is undocumented
