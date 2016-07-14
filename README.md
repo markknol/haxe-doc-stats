@@ -14,8 +14,8 @@ To see the stats of the Haxe Standard Library: <http://haxe.stroep.nl/api-stats/
 ![api-stats](https://cloud.githubusercontent.com/assets/576184/16715856/554cec7e-46ec-11e6-804f-5ac23f174c40.gif)
 
 ## How to use
-Add `-xml xml/` to your project build configuration (hxml or compilation flags). 
-This will produce a .xml file in your project. 
+Add `-xml xml/output.xml` to your project build configuration (hxml or compilation flags). 
+This will produce a .xml file in your project with documentation info which you'll need for this tool.
 
 Put it in a folder and run the following command:
 ```
