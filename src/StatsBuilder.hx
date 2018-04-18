@@ -128,7 +128,7 @@ class StatsBuilder{
     var template = Template.fromFile(templatePath);
     File.saveContent(outputPath, template.execute({
       stats: [for (stat in stats) stat],
-      subStats: [for (stat in stats) stat.name => [for (s in subStats) if (s.name.startsWith(stat.name)) s]],
+      subStats: [for (stat in stats) stat.name => (stat.name != TOPLEVEL  ? [for (s in subStats) if (s.name.startsWith(stat.name)) s] : [stats.get(TOPLEVEL)]) ],
       totals: totals,
       title: directory.replace("/"," "),
     }));

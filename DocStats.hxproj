@@ -25,7 +25,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="-dce no" />
+    <option additional="-dce no&#xA;-D dump_dependencies" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
