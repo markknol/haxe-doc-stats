@@ -1,7 +1,0 @@
--lib hxtemplo
--cp src
---run Main.hx
--cwd bin
-
--dce no
--D analyzer-optimize
