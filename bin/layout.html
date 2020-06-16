@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Haxe API - Are we documented yet?</title>
+  <title>Haxe API Stats for version ::title:: - Are we documented yet?</title>
 
   <link rel="stylesheet" type="text/css" href="https://haxe.org/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"/>
@@ -56,6 +56,7 @@
     .clickable:hover {
       text-decoration:underline;
     }
+	summary { text-align: left; }
   </style>
 </head>
 <body>
@@ -65,16 +66,15 @@
 <div class="page-wrap" data-uf-partial="view-content">
   <div class="section site-content">
     <div class="container">
-      <br/>
-      <h1>Are we documented yet? <span class="badge">Version ::title::</span></h1>
-      <p>Switch to: 
+      <h1>Are we documented yet?</h1>
+      <p><strong>Version:</strong><br/>
 		  <a href="../3.2.1/">3.2.1</a> | 
 		  <a href="../3.3/">3.3</a> | 
 		  <a href="../3.4.2/">3.4.2</a> | 
 		  <a href="../3.4.4/">3.4.4</a> |
 		  <a href="../3.4.5/">3.4.5</a> |
 		  <a href="../3.4.6/">3.4.6</a> |
-		  <a href="../3.4.7/">3.4.7</a> |
+		  <a href="../3.4.7/">3.4.7</a> <br/>
 		  <a href="../4.0.0-preview.3/">4.0.0-preview.3</a> |
 		  <a href="../4.0.0-preview.4/">4.0.0-preview.4</a> |
 		  <a href="../4.0.0-preview.5/">4.0.0-preview.5</a> |
@@ -88,6 +88,7 @@
 		  <a href="../4.1.1/">4.1.1</a> 
 	  </p>
       <hr/>
+		<h1>Stats for Haxe version ::title::</h1>
       <div class="row totals">
         <div class="span6">
           <h4>Total type descriptions <small>::totals.types.documented::/::totals.types.total::</small></h4>
@@ -118,25 +119,51 @@
         </div>
         <div class="target target-::stat.name::" ::cond stat.types.total>0 && stat.fields.total>0::>
         ::foreach subStat subStats.get(stat.name)::
-          <div class="row">
-            <span class="span2"></span>
-            <h5 class="span2 clickable" onclick="$('.missing', $(this).parent()).toggle()">::subStat.name::</h5>
-            <div class="span3">
-              <p><span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: types</p>
-              <div class="missing" style="display:none" ::cond subStat.missingTypes.length>0::> 
-                <h6>Missing:</h6>
-                <ul>::foreach name subStat.missingTypes::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
-              </div>
-            </div>
-            <div class="span5">
-              <p ::cond subStat.fields.total>0::><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members</p>
-              <p ::cond subStat.fields.total==0::><em>No members</em></p>
-              <div class="missing" style="display:none" ::cond subStat.missingFields.length>0::> 
-                <h6>Missing:</h6>
-                <ul>::foreach name subStat.missingFields::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
-              </div>
-            </div>
-          </div>
+         
+			<div class="row">
+				<span class="span2"></span>
+				::if (subStat.types.getPercentage() != 100 && subStat.missingTypes.length>0)::
+					<details class="span5">
+						<summary>
+							<span>
+								<strong class="clickable">::subStat.name::</strong> &nbsp; 
+								<span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: types
+							</span>
+						</summary>
+						<div class="missing"> 
+							<h6>Missing:</h6>
+							<ul>::foreach name subStat.missingTypes::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
+						</div>
+					</details>
+				::else::
+					<div class="span5">
+						<span>
+							<strong>::subStat.name::</strong> &nbsp; 
+							<span class="badge badge-::subStat.getClassName(subStat.types.getPercentage())::">::subStat.types.getPercentage()::%</span> ::subStat.types.documented::/::subStat.types.total:: types
+						</span>
+					</div>
+				::end::
+				::if (subStat.fields.getPercentage() != 100 && subStat.fields.total > 0)::
+					<details class="span5">
+						<summary>
+							<span>
+								<strong class="clickable">::subStat.name:: members</strong> &nbsp; 
+								<span><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members</span>
+							</span>
+						</summary>
+						<div class="missing" ::cond subStat.missingFields.length>0::> 
+							<h6>Missing:</h6>
+							<ul>::foreach name subStat.missingFields::<li>::name.split(subStat.name + ".").pop()::</li>::end::</ul>
+						</div>
+					</details>
+				::else::
+					<div class="span5">
+						<strong>::subStat.name:: members</strong> &nbsp; 
+						<span ::cond subStat.fields.total>0::><span class="badge badge-::subStat.getClassName(subStat.fields.getPercentage())::">::subStat.fields.getPercentage()::%</span> ::subStat.fields.documented::/::subStat.fields.total:: members</span>
+						<span ::cond subStat.fields.total==0::><em>0 members</em></span>
+					</div>
+				::end::
+			</div>
         ::end::
         </div>
       ::end::
@@ -152,7 +179,5 @@
   </div>
 </div>
 
-<script src="https://haxe.org/js/jquery.min.js"></script>
-<script src="https://haxe.org/js/bootstrap.min.js"></script>
 </body>
 </html>
