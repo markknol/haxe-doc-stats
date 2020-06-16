@@ -22,9 +22,8 @@ class Main {
     var directory = getArg(0, "xml/");
     if (!directory.endsWith("/")) directory += "/";
     
-    var outputPath = getArg(1, directory + "index.html");
+    var outputPath = getArg(1, "out/" + directory + "index.html");
     var templatePath = getArg(2, "layout.html");
-    
     new StatsBuilder(directory, outputPath, templatePath);
   }
 }

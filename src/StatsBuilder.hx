@@ -1,6 +1,7 @@
 package;
 
 import haxe.ds.StringMap;
+import haxe.io.Path;
 import haxe.rtti.CType.MetaData;
 import haxe.rtti.CType.TypeInfos;
 import haxe.rtti.CType.TypeTree;
@@ -19,7 +20,7 @@ class StatsBuilder{
   static var baseTargets = [TOPLEVEL];
   
   public function new(directory:String, outputPath:String, templatePath:String) {
-    
+    Sys.println("in=" + directory + " out=" + outputPath);
     // stats by type path. fill targets with empty maps
     var stats:StringMap<Stat> = [for (platform in baseTargets) platform => new Stat(platform)];
     
@@ -121,11 +122,12 @@ class StatsBuilder{
       totals.add(stat);
     }
     log += "-- total -- \n\n" + totals.toString();
-    trace(log);
+    Sys.println(log);
     //File.saveContent(logPath, directory + "log.txt");
     
     // load template, execute, save as file
     var template = Template.fromFile(templatePath);
+	FileSystem.createDirectory(Path.directory(outputPath));
     File.saveContent(outputPath, template.execute({
       stats: [for (stat in stats) stat],
       subStats: [for (stat in stats) stat.name => (stat.name != TOPLEVEL  ? [for (s in subStats) if (s.name.startsWith(stat.name)) s] : [stats.get(TOPLEVEL)]) ],

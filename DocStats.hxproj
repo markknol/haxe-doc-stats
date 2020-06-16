@@ -4,14 +4,14 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="bin\DocStats.n" />
+    <movie path="DocStats.hxml" />
     <movie fps="0" />
     <movie width="0" />
     <movie height="0" />
     <movie version="0" />
     <movie minorVersion="0" />
-    <movie platform="Neko" />
-    <movie background="#FFFFFF" />
+    <movie platform="hxml" />
+    <movie background="#2D2D2F" />
     <movie preferredSDK="Haxe 3.3.0;3.3.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
@@ -20,12 +20,12 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="" />
+    <option directives="analyzer-optimize" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="-dce no&#xA;-D dump_dependencies" />
+    <option additional="--run Main.hx&#xA;-cwd bin&#xA;-dce no" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -40,7 +40,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand />
+  <preBuildCommand>cmd /c haxe $(OutputFile)</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False">run.bat</postBuildCommand>
   <!-- Other project options -->

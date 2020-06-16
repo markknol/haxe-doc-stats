@@ -1,10 +1,19 @@
 @echo off
-cd bin
-neko DocStats.n 3.2.1
-neko DocStats.n 3.3
-neko DocStats.n 3.4.2
-neko DocStats.n 3.4.4
-neko DocStats.n 3.4.5
-neko DocStats.n 3.4.6
-neko DocStats.n 3.4.7
-neko DocStats.n 4.0.0-preview.3
+haxe run.hxml 3.2.1
+haxe run.hxml 3.3
+haxe run.hxml 3.4.2
+haxe run.hxml 3.4.4
+haxe run.hxml 3.4.5
+haxe run.hxml 3.4.6
+haxe run.hxml 3.4.7
+haxe run.hxml 4.0.0-preview.3
+haxe run.hxml 4.0.0-preview.4
+haxe run.hxml 4.0.0-preview.5
+haxe run.hxml 4.0.0-rc.1
+haxe run.hxml 4.0.0-rc.2
+haxe run.hxml 4.0.0-rc.3
+haxe run.hxml 4.0.0-rc.4
+haxe run.hxml 4.0.0
+haxe run.hxml 4.0.5
+haxe run.hxml 4.1.0
+haxe run.hxml 4.1.1

@@ -1,0 +1,7 @@
+-lib hxtemplo
+-cp ../src
+--cwd bin
+
+-dce no
+-D analyzer-optimize
+--run Main

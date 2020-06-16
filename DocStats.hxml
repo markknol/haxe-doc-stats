@@ -1,5 +1,7 @@
 -lib hxtemplo
 -cp src
--neko bin/DocStats.n
--main Main
+--run Main.hx
+-cwd bin
+
 -dce no
+-D analyzer-optimize
